@@ -38,11 +38,11 @@
 
 ## 	安装说明
 
-## 1. 简介
+### 1. 简介
 
 本章将介绍如何安装PaddleClas及其依赖项。
 
-## 2. 安装PaddlePaddle
+### 2. 安装PaddlePaddle
 
 运行PaddleClas需要PaddlePaddle Fluid v1.7或更高版本。请参照[安装文档](http://www.paddlepaddle.org.cn/install/quick)中的说明进行操作。
 
@@ -59,7 +59,7 @@ pip install paddlepaddle-gpu --upgrade
 - cuDNN >= 5.0
 - nccl >= 2.1.2
 
-## 3. 安装PaddleClas
+### 3. 安装PaddleClas
 
 **克隆PaddleClas模型库：**
 
@@ -84,7 +84,7 @@ visualdl可能出现安装失败，请尝试
 pip3 install --upgrade visualdl==2.0.0b3 -i https://mirror.baidu.com/pypi/simple
 
 ```
-## 4. 环境准备
+### 4. 环境准备
 
 **设置PYTHONPATH环境变量**
 ```bash
@@ -133,7 +133,7 @@ os.environ['PYTHONPATH']="PaddleClas的根路径"
 
 ## 	模型训练
 
-使用已经配置好的neu.yaml文件，通过如下的方式启动训练：
+通过如下的方式启动训练：
 
 ```bash
 python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \  
@@ -155,7 +155,7 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 
 ```bash
 python -m paddle.distributed.launch --selected_gpus="0" tools/eval.py \  
-	     -c ./configs/eval.yaml \   #配置文件路径
+       -c ./configs/eval.yaml \   #配置文件路径
        -o pretrained_model=output/ResNet50_vd/best_model/ppcls  #评估模型路径
 ```
 
@@ -179,7 +179,7 @@ PaddlePaddle模型的保存方式大致分为以下两种：
 ```bash
 python tools/export_model.py \  
     --model='ResNet50_vd'    \   #模型名称
-	  --pretrained_model=output/ResNet50_vd/best_model/ppcls \  #需要转换的模型路径
+    --pretrained_model=output/ResNet50_vd/best_model/ppcls \  #需要转换的模型路径
     --output_path=./inference  #输出的预测模型保存路径
 ```
 
@@ -191,7 +191,7 @@ python tools/export_model.py \
 python tools/infer/predict.py --use_gpu=1  \  #是否使用 GPU 预测
 	    -m inference/model \  #模型文件路径
 	    -p inference/params \  #权重文件路径
-      -i "dataset/NEU-CLS/Rs/RS_5.bmp"    #待预测的图片文件路径
+             -i "dataset/NEU-CLS/Rs/RS_5.bmp"    #待预测的图片文件路径
 ```
 
 ## 总结
