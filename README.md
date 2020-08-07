@@ -140,8 +140,8 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 	     -c ./configs/ResNet/ResNet50_vd.yaml   #配置文件路径
 ```
 注意：
--PaddleClas通过launch方式启动多卡多进程训练 通过设置FLAGS_selected_gpus 指定GPU运行卡号。
--本次项目中设置的是阶段性模型评估，并保存预测接估计最好的模型在PaddleClas/output/ResNet50_vd/best_model，best_model下包含ppcls.pdmodel、ppcls.pdopt、ppcls.pdparams三个文件用来进行后续的评估推理使用。
+- PaddleClas通过launch方式启动多卡多进程训练 通过设置FLAGS_selected_gpus 指定GPU运行卡号。
+- 本次项目中设置的是阶段性模型评估，并保存预测接估计最好的模型在PaddleClas/output/ResNet50_vd/best_model，best_model下包含ppcls.pdmodel、ppcls.pdopt、ppcls.pdparams三个文件用来进行后续的评估推理使用。
 
 ## 	模型评估
 
@@ -151,7 +151,7 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 
 这里建议在configs/eval.yaml中修改必要的参数，使用-o设置需要评估的模型路径较为方便。
 
-需要注意的是加载模型时，需要指定模型的前缀，如模型参数所在的文件夹为output/ResNet50_vd/ best_model，模型参数的名称为output/ResNet50_vd/ best_model /ppcls.pdparams，则pretrained_model参数需要指定为output/ResNet50_vd/ best_model /ppcls，PaddleClas会自动补齐.pdparams的后缀。通过如下的方式启动评估：
+需要注意的是加载模型时，需要指定模型的前缀，如模型参数所在的文件夹为output/ResNet50_vd/best_model，模型参数的名称为output/ResNet50_vd/ best_model /ppcls.pdparams，则pretrained_model参数需要指定为output/ResNet50_vd/ best_model /ppcls，PaddleClas会自动补齐.pdparams的后缀。通过如下的方式启动评估：
 
 ```bash
 python -m paddle.distributed.launch --selected_gpus="0" tools/eval.py \  
