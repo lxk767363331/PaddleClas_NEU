@@ -148,7 +148,9 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 首先需要修改评估所需的配置文件，修改方式有两种：
 - 直接修改configs/eval.yaml
 - -o参数更新配置
+
 这里建议在configs/eval.yaml中修改必要的参数，使用-o设置需要评估的模型路径较为方便。
+
 需要注意的是加载模型时，需要指定模型的前缀，如模型参数所在的文件夹为output/ResNet50_vd/ best_model，模型参数的名称为output/ResNet50_vd/ best_model /ppcls.pdparams，则pretrained_model参数需要指定为output/ResNet50_vd/ best_model /ppcls，PaddleClas会自动补齐.pdparams的后缀。通过如下的方式启动评估：
 
 ```bash
