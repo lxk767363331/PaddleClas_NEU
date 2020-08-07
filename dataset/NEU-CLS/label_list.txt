@@ -1,0 +1,6 @@
+0	Cr
+1	Pa
+2	Ps
+3	Rs
+4	Sc
+5	ln
