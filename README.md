@@ -133,6 +133,14 @@ os.environ['PYTHONPATH']="PaddleClas的根路径"
 
 ## 	模型训练
 
+关于预训练模型：
+
+如需使用预训练模型，则可通过下面的方式下载预训练模型，代码中提供了ResNet系列所有预训练模型的下载链接。
+
+```bash
+python download_model.py ResNet50_vd_pretrained #模型名称+_pretrained
+```
+
 通过如下的方式启动训练：
 
 ```bash
@@ -140,8 +148,11 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 	     -c ./configs/ResNet/ResNet50_vd.yaml   #配置文件路径
 ```
 注意：
+- 如需使用预训练模型，则在启动命令中添加 `-o pretrained_model=./ResNet50_vd_pretrained`，不使用预训练模型跳过即可。
 - PaddleClas通过launch方式启动多卡多进程训练 通过设置FLAGS_selected_gpus 指定GPU运行卡号。
 - 本次项目中设置的是阶段性模型评估，并保存预测接估计最好的模型在PaddleClas/output/ResNet50_vd/best_model，best_model下包含ppcls.pdmodel、ppcls.pdopt、ppcls.pdparams三个文件用来进行后续的评估推理使用。
+
+
 
 ## 	模型评估
 
