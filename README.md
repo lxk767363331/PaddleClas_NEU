@@ -145,7 +145,7 @@ python download_model.py ResNet50_vd_pretrained #模型名称+_pretrained
 
 ```bash
 python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \  
-	     -c ./configs/ResNet/ResNet50_vd.yaml   #配置文件路径
+	     -c ./configs/neu.yaml   #配置文件路径
 ```
 注意：
 - 如需使用预训练模型，则在启动命令中添加 `-o pretrained_model=./ResNet50_vd_pretrained`，不使用预训练模型跳过即可。
@@ -166,7 +166,7 @@ python -m paddle.distributed.launch --selected_gpus="0" tools/train.py \
 
 ```bash
 python -m paddle.distributed.launch --selected_gpus="0" tools/eval.py \  
-       -c ./configs/eval.yaml \   #配置文件路径
+       -c ./configs/neu_eval.yaml \   #配置文件路径
        -o pretrained_model=output/ResNet50_vd/best_model/ppcls  #评估模型路径
 ```
 
